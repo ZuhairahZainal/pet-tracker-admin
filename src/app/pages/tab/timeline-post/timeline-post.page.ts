@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimelinePostPage implements OnInit {
 
+  public segment: string = "lostpet";
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  segmentChanged(ev: any) {
+    this.segment = ev.detail.value;
   }
 
 }

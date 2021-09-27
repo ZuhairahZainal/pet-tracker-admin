@@ -1,9 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>timeline-post</ion-title>
+    <ion-title class="ion-text-center">Timeline Post</ion-title>
+
+    <ion-buttons slot=end>
+      <ion-button>
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)" value="lostpet" scrollable>
+      <ion-segment-button value="lostpet">
+        <ion-label>
+          Lost Pet
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="donation">
+        <ion-label>
+          Donation
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <ion-list *ngIf="segment === 'lostpet'">
+    <ion-item>
+      <ion-label>lost pet</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="segment === 'donation'">
+    <ion-item>
+      <ion-label>donation</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

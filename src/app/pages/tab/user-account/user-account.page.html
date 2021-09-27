@@ -1,9 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user-account</ion-title>
+    <ion-title class="ion-text-center">User Account</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)" value="approve" scrollable>
+      <ion-segment-button value="approve">
+        <ion-label>Approve</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="disapprove">
+        <ion-label>Disapprove</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
+  <ion-list *ngIf="segment === 'approve'">
+    <ion-item>
+      <ion-label>Approve</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="segment === 'disapprove'">
+    <ion-item>
+      <ion-label>Disapprove</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

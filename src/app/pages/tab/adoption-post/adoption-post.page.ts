@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdoptionPostPage implements OnInit {
 
+  public segment: string = "approve";
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  segmentChanged(ev: any) {
+    this.segment = ev.detail.value;
+  }
 }
