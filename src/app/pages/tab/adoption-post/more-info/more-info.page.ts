@@ -1,38 +1,59 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { Product } from 'src/app/models/sales/product';
-import { SalesService } from 'src/app/services/sales/sales.service';
+import { Adoption } from 'src/app/models/adoption/adoption';
+import { AdoptionService } from 'src/app/services/adoption/adoption.service';
 
 @Component({
-  selector: 'app-new-product-post',
-  templateUrl: './new-product-post.page.html',
-  styleUrls: ['./new-product-post.page.scss'],
+  selector: 'app-more-info',
+  templateUrl: './more-info.page.html',
+  styleUrls: ['./more-info.page.scss'],
 })
-export class NewProductPostPage implements OnInit {
+export class MoreInfoPage implements OnInit {
 
   disapproval = {
     createdAt: new Date().toDateString(),
-    category: 'Disapproval Post',
+    category: 'Disapproval Adoption Post',
     message: 'Your previous post has been deleted due to '
   }
 
-  public segment: string = "pending";
-  public productList: Observable<Product[]>;
+  adoptionId: string;
+  public adoption: Adoption;
+  userId: string;
+  petId: string;
+  userDetails;
+  adoptionPosts;
+  petRequestedDetails;
 
-  constructor(private saleService: SalesService,
-              private alertCtrl: AlertController,
+  constructor(private activatedRoute: ActivatedRoute,
               private firestore: AngularFirestore,
-              private router: Router) {}
+              private alertCtrl: AlertController,
+              private router: Router,
+              private adoptionService: AdoptionService) { }
 
   ngOnInit() {
-    this.productList = this.saleService.getUserProduct();
-  }
+    this.adoptionId = this.activatedRoute.snapshot.paramMap.get('id');
 
-  segmentChanged(ev: any) {
-    this.segment = ev.detail.value;
+    this.adoptionService.getAdoptionDetail(this.adoptionId).subscribe(adoptionDetail => {
+      this.adoption = adoptionDetail;
+      this.userId = adoptionDetail['userId'];
+      this.petId = adoptionDetail['petId'];
+
+      this.firestore.collection('users').doc(this.userId).valueChanges().subscribe( userDetail => {
+        this.userDetails = userDetail;
+      });
+
+      this.firestore.collection('adoption').doc(this.userId).collection('adoptionDetail')
+      .valueChanges().subscribe( adoptionPost => {
+        this.adoptionPosts = adoptionPost;
+      });
+
+      this.firestore.collection('adoption').doc(this.userId).collection('adoptionDetail').doc(this.petId)
+      .valueChanges().subscribe( petRequestedDetail => {
+        this.petRequestedDetails = petRequestedDetail;
+      });
+    });
   }
 
   async approveBtn(adoptionId: string, userId: string){
@@ -111,5 +132,9 @@ export class NewProductPostPage implements OnInit {
       });
       alert.present();
     })
+  }
+
+  sendEmail(){
+    console.log('email')
   }
 }

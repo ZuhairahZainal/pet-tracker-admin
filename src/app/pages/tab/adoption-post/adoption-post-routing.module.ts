@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AdoptionPostPage
+  },
+  {
+    path: 'more-info/:id',
+    loadChildren: () => import('./more-info/more-info.module').then( m => m.MoreInfoPageModule)
   }
 ];
 

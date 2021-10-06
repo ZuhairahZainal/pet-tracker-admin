@@ -1,11 +1,11 @@
 <ion-tabs #tabs (ionTabsDidChange)="setCurrentTab($event)">
   <ion-tab-bar>
     <ion-tab-button tab="timeline-post">
-      <ion-icon [name]="selectTab === 'timeline-post' ? 'home' : 'home-outline'"></ion-icon>
+      <ion-icon [name]="selectTab === 'timeline-post' ? 'newspaper' : 'newspaper-outline'"></ion-icon>
     </ion-tab-button>
 
     <ion-tab-button tab="adoption-post">
-      <ion-icon [name]="selectTab === 'adoption-post' ? 'list' : 'list-outline'"></ion-icon>
+      <ion-icon [name]="selectTab === 'adoption-post' ? 'paw' : 'paw-outline'"></ion-icon>
     </ion-tab-button>
 
     <ion-tab-button tab="new-product-post">
@@ -13,7 +13,7 @@
     </ion-tab-button>
 
     <ion-tab-button tab="user-account">
-      <ion-icon [name]="selectTab === 'user-account' ? 'clipboard' : 'clipboard-outline'"></ion-icon>
+      <ion-icon [name]="selectTab === 'user-account' ? 'people' : 'people-outline'"></ion-icon>
     </ion-tab-button>
 
     <ion-tab-button tab="user-report">

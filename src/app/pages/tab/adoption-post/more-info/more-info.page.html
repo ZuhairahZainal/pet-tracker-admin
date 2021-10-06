@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tab/adoption-post">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Adoption Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="adoption?.adminApprove === 'Pending'">
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" (click)="approveBtn(adoption?.adoptionId, adoption?.userId)">Approve</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button  expand="block" color="danger" (click)="disapproveBtn(adoption?.adoptionId, adoption?.userId)">Disapprove</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>User Details</ion-card-subtitle>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Username:
+        </ion-label>
+        {{ userDetails?.name }}
+      </ion-card-title>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Email Address:
+        </ion-label>
+          {{ userDetails?.email }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <ion-button expand="block" color="tertiary" (click)="sendEmail()">Send Query to User</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+    <img *ngIf="adoption?.petImage" [src]="adoption?.petImage">
+    <ion-card-content>
+      <ion-card-subtitle  *ngIf="!adoption?.petImage" color="warning">
+        Medical Record not included.
+      </ion-card-subtitle>
+    </ion-card-content>
+
+    <ion-card-header>
+      <ion-card-subtitle>Adoption Post Details</ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Posted on:
+        </ion-label>
+         {{ adoption?.createdAt }}
+       </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Name:
+        </ion-label>
+       {{ adoption?.petName }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Age:
+        </ion-label>
+          {{ adoption?.petAge }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Category:
+        </ion-label>
+         {{ adoption?.petCategory }}
+       </ion-card-subtitle>
+
+       <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Condition:
+        </ion-label>
+         {{ adoption?.petCondition }}
+       </ion-card-subtitle>
+
+       <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Breed:
+        </ion-label>
+         {{ adoption?.petBreed }}
+       </ion-card-subtitle>
+
+       <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Gender:
+        </ion-label>
+         {{ adoption?.petGender }}
+       </ion-card-subtitle>
+
+       <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Spay Status:
+        </ion-label>
+         {{ adoption?.petSpayStatus }}
+       </ion-card-subtitle>
+
+       <ion-card-subtitle>
+        <ion-label color="dark">
+          Pet Description:
+        </ion-label>
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+         {{ adoption?.petDescription }}
+       </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+          Medical Record
+      </ion-card-subtitle>
+    </ion-card-header>
+    <img *ngIf="adoption?.petMedicalRecord" [src]="adoption?.petMedicalRecord">
+    <ion-card-content>
+      <ion-card-subtitle  *ngIf="!adoption?.petMedicalRecord" color="warning">
+        Medical Record not included.
+      </ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
