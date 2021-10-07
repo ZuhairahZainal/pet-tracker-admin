@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { Report } from 'src/app/models/report/report';
+import { ReportService } from 'src/app/services/report/report.service';
 
 @Component({
   selector: 'app-user-report',
@@ -7,9 +13,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserReportPage implements OnInit {
 
-  constructor() { }
+  public reportList: Observable<Report[]>;
+
+  constructor(private reportService: ReportService,
+              private alertCtrl: AlertController,
+              private firestore: AngularFirestore,
+              private router: Router) {}
 
   ngOnInit() {
+    this.reportList = this.reportService.getUserReport();
   }
 
 }
