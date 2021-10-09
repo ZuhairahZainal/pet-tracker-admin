@@ -19,7 +19,8 @@ export interface LostPetPost {
   petcolor: string,
   petgender: string,
   petname: string,
-  reward: number,
+  reward: boolean,
+  rewardAmount: number,
   petImage: string,
 }
 

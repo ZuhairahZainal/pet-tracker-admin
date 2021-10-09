@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Feed, LostPetPost } from 'src/app/models/post/post';
+import { DonationPost, Feed, LostPetPost } from 'src/app/models/post/post';
 import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
@@ -13,6 +13,8 @@ export class TimelinePostPage implements OnInit {
   public segment: string = "newsfeed";
   public feedList: Observable<Feed[]>;
   public lostPetList: Observable<LostPetPost[]>;
+  public donationList: Observable<DonationPost[]>;
+
   userId: any;
 
   constructor(private postService: PostService) {}
@@ -22,7 +24,7 @@ export class TimelinePostPage implements OnInit {
 
     this.lostPetList = this.postService.getLostPetPost();
 
-
+    this.donationList = this.postService.getDonationPost();
 
   }
 

@@ -57,6 +57,12 @@
               <ion-col size=8>
                 <ion-row>
                   <ion-col>
+                    <ion-label color="tertiary">Pending</ion-label>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col>
                     <ion-label>Post Category : News Feed Post</ion-label>
                   </ion-col>
                 </ion-row>
@@ -69,7 +75,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button fill="clear" color="tertiary" class="ion-no-padding">More Info</ion-button>
+                    <ion-button fill="clear" color="dark" class="ion-no-padding">More Info</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-col>
@@ -107,7 +113,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button fill="clear" color="tertiary" class="ion-no-padding">More Info</ion-button>
+                    <ion-button fill="clear" color="dark" class="ion-no-padding">More Info</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-col>
@@ -145,7 +151,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button fill="clear" color="tertiary" class="ion-no-padding">More Info</ion-button>
+                    <ion-button fill="clear" color="dark" class="ion-no-padding">More Info</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-col>
@@ -174,6 +180,12 @@
               <ion-col size=8>
                 <ion-row>
                   <ion-col>
+                    <ion-label color="tertiary">Pending</ion-label>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col>
                     <ion-label>Post Category : Lost Pet Post</ion-label>
                   </ion-col>
                 </ion-row>
@@ -186,7 +198,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button fill="clear" color="tertiary" class="ion-no-padding">More Info</ion-button>
+                    <ion-button fill="clear" color="dark" class="ion-no-padding">More Info</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-col>
@@ -224,7 +236,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button fill="clear" color="tertiary" class="ion-no-padding">More Info</ion-button>
+                    <ion-button fill="clear" color="dark" class="ion-no-padding">More Info</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-col>
@@ -262,7 +274,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button fill="clear" color="tertiary" class="ion-no-padding">More Info</ion-button>
+                    <ion-button fill="clear" color="dark" class="ion-no-padding">More Info</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-col>
@@ -274,20 +286,26 @@
   </ion-grid>
 
   <ion-grid  *ngIf="segment === 'donation'">
-    <ion-row *ngFor="let detail of lostPetList | async">
+    <ion-row *ngFor="let detail of donationList | async">
       <ion-col>
         <ion-card>
           <ion-grid *ngIf="detail.adminApprove === 'Pending'">
-            <ion-row [routerLink]="['/tab/timeline-post/donation-detail/', detail?.lostPetFormId]">
+            <ion-row [routerLink]="['/tab/timeline-post/donation-detail/', detail?.donationFormId]">
 
               <ion-col size=3>
                 <ion-avatar>
-                  <img *ngIf="detail?.petImage" [src]="detail.petImage">
-                  <img *ngIf="!detail?.petImage" src="../../../../assets/user.jpeg">
+                  <img *ngIf="detail?.receiptImage" [src]="detail.receiptImage">
+                  <img *ngIf="!detail?.receiptImage" src="../../../../assets/user.jpeg">
                 </ion-avatar>
               </ion-col>
 
               <ion-col size=8>
+                <ion-row>
+                  <ion-col>
+                    <ion-label color="tertiary">Pending</ion-label>
+                  </ion-col>
+                </ion-row>
+
                 <ion-row>
                   <ion-col>
                     <ion-label>Post Category : Donation / Fund Raiser Post</ion-label>
@@ -302,7 +320,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button fill="clear" color="tertiary" class="ion-no-padding">More Info</ion-button>
+                    <ion-button fill="clear" color="dark" class="ion-no-padding">More Info</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-col>
@@ -310,12 +328,12 @@
           </ion-grid>
 
           <ion-grid *ngIf="detail.adminApprove === 'Approved'">
-            <ion-row [routerLink]="['/tab/timeline-post/donation-detail/', detail?.lostPetFormId]">
+            <ion-row [routerLink]="['/tab/timeline-post/donation-detail/', detail?.donationFormId]">
 
               <ion-col size=3>
                 <ion-avatar>
-                  <img *ngIf="detail?.petImage" [src]="detail.petImage">
-                  <img *ngIf="!detail?.petImage" src="../../../../assets/user.jpeg">
+                  <img *ngIf="detail?.receiptImage" [src]="detail.receiptImage">
+                  <img *ngIf="!detail?.receiptImage" src="../../../../assets/user.jpeg">
                 </ion-avatar>
               </ion-col>
 
@@ -340,7 +358,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button fill="clear" color="tertiary" class="ion-no-padding">More Info</ion-button>
+                    <ion-button fill="clear" color="dark" class="ion-no-padding">More Info</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-col>
@@ -348,12 +366,12 @@
           </ion-grid>
 
           <ion-grid *ngIf="detail.adminApprove === 'Disapproved'">
-            <ion-row [routerLink]="['/tab/timeline-post/donation-detail/', detail?.lostPetFormId]">
+            <ion-row [routerLink]="['/tab/timeline-post/donation-detail/', detail?.donationFormId]">
 
               <ion-col size=3>
                 <ion-avatar>
-                  <img *ngIf="detail?.petImage" [src]="detail.petImage">
-                  <img *ngIf="!detail?.petImage" src="../../../../assets/user.jpeg">
+                  <img *ngIf="detail?.receiptImage" [src]="detail.receiptImage">
+                  <img *ngIf="!detail?.receiptImage" src="../../../../assets/user.jpeg">
                 </ion-avatar>
               </ion-col>
 
@@ -378,7 +396,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button fill="clear" color="tertiary" class="ion-no-padding">More Info</ion-button>
+                    <ion-button fill="clear" color="dark" class="ion-no-padding">More Info</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-col>

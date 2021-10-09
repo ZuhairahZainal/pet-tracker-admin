@@ -1,9 +1,130 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>lostpet-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tab/timeline-post">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Lost Pet Post</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid *ngIf="lostpet?.adminApprove === 'Pending'">
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" (click)="approveBtn(lostpet?.lostPetFormId, lostpet?.userId)">Approve</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button  expand="block" color="danger" (click)="disapproveBtn(lostpet?.lostPetFormId, lostpet?.userId)">Disapprove</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>User Details</ion-card-subtitle>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Username:
+        </ion-label>
+        {{ userDetails?.name }}
+      </ion-card-title>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Email Address:
+        </ion-label>
+          {{ userDetails?.email }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <ion-button expand="block" color="tertiary" (click)="sendEmail()">Send Query to User</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Lost Pet Details</ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Name:
+        </ion-label>
+       {{ lostpet?.petname }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Color:
+        </ion-label>
+          {{ lostpet?.petcolor }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Color:
+        </ion-label>
+          {{ lostpet?.petgender }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Pet Last Location:
+        </ion-label>
+          {{ lostpet?.location }}
+      </ion-card-subtitle>
+      </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <img *ngIf="lostpet?.petImage" [src]="lostpet?.petImage">
+
+    <ion-card-header>
+      <ion-card-subtitle>Post Details</ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Posted on:
+        </ion-label>
+         {{ lostpet?.createdAt }}
+       </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Post Category:
+        </ion-label>
+       {{ lostpet?.category }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle>
+        <ion-label color="dark">
+          Post Description:
+        </ion-label>
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+         {{ lostpet?.description }}
+       </ion-card-subtitle>
+
+       <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Have Reward:
+        </ion-label>
+          {{ lostpet?.reward }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Reward Amount:
+        </ion-label>
+          {{ lostpet?.rewardAmount }}
+      </ion-card-subtitle>
+      </ion-card-header>
+  </ion-card>
 
 </ion-content>

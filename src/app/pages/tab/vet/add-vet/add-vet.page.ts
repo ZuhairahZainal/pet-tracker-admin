@@ -46,8 +46,8 @@ export class AddVetPage implements OnInit {
     vetSocMed: null,
     vetPhoto: null,
     vetService: '',
-    vetOpen: null,
-    vetClose: null
+    vetOpen: new Date(),
+    vetClose: new Date()
   }
 
   addVetForm: FormGroup;

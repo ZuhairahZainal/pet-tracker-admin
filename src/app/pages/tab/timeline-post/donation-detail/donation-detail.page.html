@@ -1,9 +1,111 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>donation-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tab/timeline-post">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Donation Post</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid *ngIf="donation?.adminApprove === 'Pending'">
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" (click)="approveBtn(donation?.donationFormId, donation?.userId)">Approve</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button  expand="block" color="danger" (click)="disapproveBtn(donation?.donationFormId, donation?.userId)">Disapprove</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>User Details</ion-card-subtitle>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Username:
+        </ion-label>
+        {{ userDetails?.name }}
+      </ion-card-title>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Email Address:
+        </ion-label>
+          {{ userDetails?.email }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <ion-button expand="block" color="tertiary" (click)="sendEmail()">Send Query to User</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+    <img *ngIf="donation?.receiptImage" [src]="donation?.receiptImage">
+
+    <ion-card-header>
+      <ion-card-subtitle>Donation Details</ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Donation Title:
+        </ion-label>
+       {{ donation?.title }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Donation Type:
+        </ion-label>
+          {{ donation?.donationType }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Donation Amount:
+        </ion-label>
+          {{ donation?.donationAmount }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle>
+        <ion-label color="dark">
+          Post Description:
+        </ion-label>
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+         {{ donation?.description }}
+       </ion-card-subtitle>
+
+      </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Post Details</ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Posted on:
+        </ion-label>
+         {{ donation?.createdAt }}
+       </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Post Category:
+        </ion-label>
+       {{ donation?.category }}
+      </ion-card-subtitle>
+
+      </ion-card-header>
+  </ion-card>
 
 </ion-content>

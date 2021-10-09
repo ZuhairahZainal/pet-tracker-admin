@@ -26,7 +26,6 @@ export class FeedDetailPage implements OnInit {
   userDetails;
   public timeline: Feed;
   feedPosts;
-  feedTimelines;
 
   constructor(private postService: PostService,
               private activatedRoute: ActivatedRoute,
@@ -51,11 +50,6 @@ export class FeedDetailPage implements OnInit {
       this.firestore.collection('feed').doc(this.userId).collection('timeline')
       .valueChanges().subscribe( feedPost => {
         this.feedPosts = feedPost;
-      });
-
-      this.firestore.collection('feed').doc(this.userId).collection('adoptionDetail').doc(this.feedId)
-      .valueChanges().subscribe( feedTimeline => {
-        this.feedTimelines = feedTimeline;
       });
     });
 
