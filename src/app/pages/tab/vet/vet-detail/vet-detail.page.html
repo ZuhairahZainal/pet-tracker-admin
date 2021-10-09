@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tab/vet">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>{{ vet?.vetName}} Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="tertiary" [routerLink]="['../vet-detail/edit-info/', vet?.vetId]">Edit</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button  expand="block" color="danger" (click)="removeVetDetail(vet?.vetId)">Delete Vet</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <img id="img" *ngIf="vet?.vetPhoto" [src]="vet?.vetPhoto">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>User Details</ion-card-subtitle>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Vet Name:
+        </ion-label>
+        {{ vet?.vetName }}
+      </ion-card-title>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Email Address:
+        </ion-label>
+         {{ vet?.vetEmail }}
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Vet Details</ion-card-subtitle>
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Vet Location:
+        </ion-label>
+          {{ vet?.vetAddress }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Vet Service:
+        </ion-label>
+          {{ vet?.vetService }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Date of Birth:
+        </ion-label>
+          {{ vet?.vetMobilePhone }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Phone Number:
+        </ion-label>
+         {{ vet?.vetPhone }}
+       </ion-card-subtitle>
+
+       <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Social Media:
+        </ion-label>
+         {{ vet?.vetSocMed }}
+       </ion-card-subtitle>
+
+    </ion-card-header>
+
+  </ion-card>
+
+</ion-content>

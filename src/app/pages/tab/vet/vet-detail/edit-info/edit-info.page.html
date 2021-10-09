@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/tab/vet/vet-detail', vetDetail?.vetId]">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Edit Vet Info</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="updateVetDetail()">
+        <ion-label>Done</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img *ngIf="vetDetail?.vetPhoto" [src]="vetDetail?.vetPhoto" id="img"/>
+
+  <ion-list lines="full">
+    <form [formGroup]="updateVetDetailForm" >
+      <ion-card>
+        <ion-card-content>
+          <ion-card-subtitle>Vet Name</ion-card-subtitle>
+            <ion-input type="text" formControlName="vetName" [placeholder]="vetDetail?.vetName"
+            required [class.invalid]="!updateVetDetailForm.controls.vetName.valid && updateVetDetailForm.controls.vetName.touched"></ion-input>
+        </ion-card-content>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateVetDetailForm.controls.vetName.valid && updateVetDetailForm.controls.vetName.touched">
+          <p>The Vet Name is required to be at least 5 characters.</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+
+            <ion-card-subtitle>Vet Email Address</ion-card-subtitle>
+            <ion-input formControlName="vetEmail" type="email" required [placeholder]="vetDetail?.vetEmail"
+            [class.invalid]="!updateVetDetailForm.controls.vetEmail.valid && updateVetDetailForm.controls.vetEmail.touched"></ion-input>
+          </ion-card-content>
+
+          <ion-item lines="none" class="error-message" *ngIf="!updateVetDetailForm.controls.vetEmail.valid && updateVetDetailForm.controls.vetEmail.touched">
+            <p>Please enter a valid email address.</p>
+          </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+          <ion-card-subtitle>Vet Location Address</ion-card-subtitle>
+          <ion-input formControlName="vetAddress" type="text" required [placeholder]="vetDetail?.vetAddress"
+          [class.invalid]="!updateVetDetailForm.controls.vetAddress.valid && updateVetDetailForm.controls.vetAddress.touched"></ion-input>
+        </ion-card-content>
+        <ion-item lines="none" class="error-message" *ngIf="!updateVetDetailForm.controls.vetAddress.valid && updateVetDetailForm.controls.vetAddress.touched">
+          <p>The Vet Address is required to be at least 10 characters.</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+          <ion-card-subtitle>Vet Phone Number</ion-card-subtitle>
+          <ion-input formControlName="vetPhone" type="tel" required [placeholder]="vetDetail?.vetPhone"
+          [class.invalid]="!updateVetDetailForm.controls.vetPhone.valid && updateVetDetailForm.controls.vetPhone.touched"></ion-input>
+        </ion-card-content>
+        <ion-item lines="none" class="error-message" *ngIf="!updateVetDetailForm.controls.vetPhone.valid && updateVetDetailForm.controls.vetPhone.touched">
+          <p>Please enter a valid phone number.</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+          <ion-card-subtitle>Vet Mobile Number</ion-card-subtitle>
+          <ion-input formControlName="vetMobilePhone" type="tel" required [placeholder]="vetDetail?.vetMobilePhone"
+          [class.invalid]="!updateVetDetailForm.controls.vetMobilePhone.valid && updateVetDetailForm.controls.vetMobilePhone.touched"></ion-input>
+        </ion-card-content>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateVetDetailForm.controls.vetMobilePhone.valid && updateVetDetailForm.controls.vetMobilePhone.touched">
+          <p>Please enter a valid phone number.</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+          <ion-card-subtitle>Vet Social Media</ion-card-subtitle>
+          <ion-input formControlName="vetSocMed" type="text" required [placeholder]="vetDetail?.vetSocMed"
+          [class.invalid]="!updateVetDetailForm.controls.vetSocMed.valid && updateVetDetailForm.controls.vetSocMed.touched"></ion-input>
+            </ion-card-content>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateVetDetailForm.controls.vetSocMed.valid && updateVetDetailForm.controls.vetSocMed.touched">
+          <p>Enter any Social Media link here or just enter none if N/A.</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+          <ion-card-subtitle>Vet Services</ion-card-subtitle>
+          <ion-input formControlName="vetService" type="text" required [placeholder]="vetDetail?.vetService"
+          [class.invalid]="!updateVetDetailForm.controls.vetService.valid && updateVetDetailForm.controls.vetService.touched"></ion-input>
+        </ion-card-content>
+        <ion-item lines="none" class="error-message" *ngIf="!updateVetDetailForm.controls.vetService.valid && updateVetDetailForm.controls.vetService.touched">
+          <p>List down services provide by this vet.</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+            <ion-card-subtitle>Opening Time</ion-card-subtitle>
+            <ion-datetime [placeholder]="vetDetail?.vetOpen"  formControlName="vetOpen"  displayFormat="hh-mm-A"></ion-datetime>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+            <ion-card-subtitle>Closing Time</ion-card-subtitle>
+            <ion-datetime [placeholder]="vetDetail?.vetClose"  formControlName="vetClose" displayFormat="hh-mm-A"></ion-datetime>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </ion-list>
+
+</ion-content>
+

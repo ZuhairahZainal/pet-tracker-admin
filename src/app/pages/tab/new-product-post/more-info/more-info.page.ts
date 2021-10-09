@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Product } from 'src/app/models/sales/product';
 import { SalesService } from 'src/app/services/sales/sales.service';
+import { EmailComposer } from '@ionic-native/email-composer/ngx'
 
 @Component({
   selector: 'app-more-info',
@@ -21,13 +22,15 @@ export class MoreInfoPage implements OnInit {
   public product: Product;
   productId: string;
   userId: string;
+  userEmail: string;
   userDetails;
 
   constructor(private activatedRoute: ActivatedRoute,
               private firestore: AngularFirestore,
               private alertCtrl: AlertController,
               private router: Router,
-              private saleService: SalesService) { }
+              private saleService: SalesService,
+              private composer: EmailComposer) { }
 
   ngOnInit() {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -39,6 +42,7 @@ export class MoreInfoPage implements OnInit {
 
       this.firestore.collection('users').doc(this.userId).valueChanges().subscribe( userDetail => {
         this.userDetails = userDetail;
+        this.userEmail = userDetail['email'];
       });
     })
   }
@@ -122,8 +126,10 @@ export class MoreInfoPage implements OnInit {
   }
 
   sendEmail(){
-    console.log('email')
+    console.log(this.userEmail);
+    this.composer.open({
+      to: this.userEmail
+    })
   }
-
 
 }

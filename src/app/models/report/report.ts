@@ -1,5 +1,5 @@
 export interface Report {
-  createtAt: string,
+  createdAt: string,
   reportDescription: string,
   reportId: string,
   reportProof: string,

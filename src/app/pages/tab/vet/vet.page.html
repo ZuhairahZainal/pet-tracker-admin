@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tab/timeline-post">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Vet List</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/tab/vet/add-vet">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>Add Vet</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+      <ion-row *ngFor="let detail of vetList | async">
+        <ion-col>
+          <ion-card>
+            <ion-grid>
+              <ion-row [routerLink]="['/tab/vet/vet-detail/', detail.vetId]">
+                <ion-col size=3>
+                  <ion-avatar>
+                    <img *ngIf="detail?.vetPhoto" [src]="detail.vetPhoto">
+                    <img *ngIf="!detail?.vetPhoto" src="../../../../assets/user.jpeg">
+                  </ion-avatar>
+                </ion-col>
+
+                <ion-col size=8>
+                  <ion-row>
+                    <ion-col>
+                      <ion-label>Vet Name : {{ detail.vetName }}</ion-label>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col>
+                      <ion-label>Location : {{ detail.vetAddress }}</ion-label>
+                    </ion-col>
+                  </ion-row>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

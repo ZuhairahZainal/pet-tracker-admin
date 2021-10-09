@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tab/user-report">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>User Report Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>User Details</ion-card-subtitle>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Username:
+        </ion-label>
+        {{ report?.userName }}
+      </ion-card-title>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Email Address:
+        </ion-label>
+         {{ report?.userEmail }}
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Report Details</ion-card-subtitle>
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Report Status:
+        </ion-label>
+          {{ report?.reportStatus }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+         Report Type:
+        </ion-label>
+          {{ report?.reportType }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Report Description:
+        </ion-label>
+          {{ report?.reportDescription }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Report Proof:
+        </ion-label>
+        <img [src]="report?.reportProof">
+       </ion-card-subtitle>
+
+       <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Posted on:
+        </ion-label>
+         {{ report?.createdAt }}
+       </ion-card-subtitle>
+    </ion-card-header>
+
+  </ion-card>
+      <ion-grid>
+      <ion-row>
+        <ion-col >
+          <ion-button expand="block" color="tertiary" (click)="sendEmail()">Respond User Report</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

@@ -1,5 +1,8 @@
 {
-  "name": "pet-tracker-admin",
-  "integrations": {},
+  "name": "Pet Tracker Admin",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular"
 }

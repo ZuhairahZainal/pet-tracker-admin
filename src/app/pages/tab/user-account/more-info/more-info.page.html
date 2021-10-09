@@ -13,4 +13,64 @@
 <ion-content>
   <img id="img" *ngIf="user?.userImage" [src]="user?.userImage">
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>User Details</ion-card-subtitle>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Username:
+        </ion-label>
+        {{ user?.name }}
+      </ion-card-title>
+      <ion-card-title color="tertiary">
+        <ion-label color="dark">
+          Email Address:
+        </ion-label>
+         {{ user?.email }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <ion-button expand="block" color="tertiary" (click)="sendEmail()">Send Query to User</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>User Details</ion-card-subtitle>
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          First Name:
+        </ion-label>
+          {{ user?.firstname }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Last Name:
+        </ion-label>
+          {{ user?.lastname }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Date of Birth:
+        </ion-label>
+          {{ user?.dob }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Phone Number:
+        </ion-label>
+         {{ user?.phone }}
+       </ion-card-subtitle>
+
+    </ion-card-header>
+
+  </ion-card>
+
 </ion-content>

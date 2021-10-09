@@ -1,0 +1,51 @@
+ion-header{
+  position: absolute;
+}
+
+ion-toolbar{
+  padding-left: 10px;
+
+  ion-icon{
+    font-size: 2rem;
+  }
+}
+
+ion-content{
+  --ion-background-color: #9DDFCC !important;
+  font-family: "AbeeZee" !important;
+}
+
+ion-card{
+  --ion-background-color: transparent;
+  box-shadow: none !important;
+}
+
+ion-input{
+  --background: white;
+  border-radius: 10px;
+  font-family: "AbeeZee";
+}
+
+ion-icon{
+  font-size: 1.5rem;
+}
+
+ion-label{
+  font-family: 'AbeeZee' !important;
+}
+
+.ion-padding{
+  --ion-background-color: #9DDFCC;
+  font-family: "AbeeZee";
+}
+
+.btn{
+  font-family: "AbeeZee";
+  ion-button{
+    --background: #9DD2DF;
+    padding-left: 25%;
+    margin: 20px !important;
+    width: 270px !important;
+  }
+}
+

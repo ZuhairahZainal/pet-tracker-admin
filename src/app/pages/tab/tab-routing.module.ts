@@ -29,6 +29,14 @@ const routes: Routes = [
         loadChildren: () => import('./user-report/user-report.module').then( m => m.UserReportPageModule)
       }
     ]
+  },
+  {
+    path: 'vet',
+    loadChildren: () => import('./vet/vet.module').then( m => m.VetPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
   }
 ];
 

@@ -1,12 +1,16 @@
-export interface User {
-  userId: string,
-  firstname: string,
-  lastname: string,
-  dob: number,
-  phone: number,
-  email: string,
-  name: string,
-  userImage: string,
-  userBio: string,
+export interface Admin {
+  adminId: string;
+  email: string;
 }
 
+export interface User{
+  dob: string;
+  email: string;
+  firstname: string;
+  lastname: string;
+  name: string;
+  phone: number;
+  userId: string;
+  userBio: string;
+  userImage: string
+}

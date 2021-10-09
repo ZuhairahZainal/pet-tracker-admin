@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Adoption } from 'src/app/models/adoption/adoption';
 import { AdoptionService } from 'src/app/services/adoption/adoption.service';
+import { EmailComposer } from '@ionic-native/email-composer/ngx'
 
 @Component({
   selector: 'app-more-info',
@@ -22,6 +23,7 @@ export class MoreInfoPage implements OnInit {
   public adoption: Adoption;
   userId: string;
   petId: string;
+  userEmail: string;
   userDetails;
   adoptionPosts;
   petRequestedDetails;
@@ -30,7 +32,8 @@ export class MoreInfoPage implements OnInit {
               private firestore: AngularFirestore,
               private alertCtrl: AlertController,
               private router: Router,
-              private adoptionService: AdoptionService) { }
+              private adoptionService: AdoptionService,
+              private composer: EmailComposer) { }
 
   ngOnInit() {
     this.adoptionId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -42,6 +45,7 @@ export class MoreInfoPage implements OnInit {
 
       this.firestore.collection('users').doc(this.userId).valueChanges().subscribe( userDetail => {
         this.userDetails = userDetail;
+        this.userEmail = userDetail['email'];
       });
 
       this.firestore.collection('adoption').doc(this.userId).collection('adoptionDetail')
@@ -135,6 +139,9 @@ export class MoreInfoPage implements OnInit {
   }
 
   sendEmail(){
-    console.log('email')
+    console.log(this.userEmail);
+    this.composer.open({
+      to: this.userEmail
+    })
   }
 }
