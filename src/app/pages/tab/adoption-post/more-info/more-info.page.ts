@@ -118,6 +118,7 @@ export class MoreInfoPage implements OnInit {
 
   disapprovePost(adoptionId: string, userId: string){
     this.firestore.collection('users').doc(userId).collection('notification').add(this.disapproval);
+    this.firestore.collection('notification').doc(userId).set(this.disapproval);
 
     this.firestore.collection('adoption').doc(userId).collection('adoptionDetail').doc(adoptionId).update({
       adminApprove: 'Disapproved'

@@ -14,7 +14,8 @@ import { SalesService } from 'src/app/services/sales/sales.service';
 export class NewProductPostPage implements OnInit {
 
   disapproval = {
-    createdAt: new Date().toDateString(),
+    time: new Date().getTime(),
+    date: new Date().toDateString(),
     category: 'Disapproval Post',
     message: 'Your previous post has been deleted due to '
   }
@@ -92,6 +93,7 @@ export class NewProductPostPage implements OnInit {
 
   disapprovePost(adoptionId: string, userId: string){
     this.firestore.collection('users').doc(userId).collection('notification').add(this.disapproval);
+    this.firestore.collection('notification').doc(userId).set(this.disapproval);
 
     this.firestore.collection('adoption').doc(userId).collection('adoptionDetail').doc(adoptionId).update({
       adminApprove: 'Disapproved'

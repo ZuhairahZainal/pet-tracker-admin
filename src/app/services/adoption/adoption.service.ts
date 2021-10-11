@@ -12,7 +12,7 @@ export class AdoptionService {
 
   // adoption post
   getAdoptionPost(): Observable<Adoption[]> {
-    return this.firestore.collection<Adoption>(`adoptionPost`).valueChanges();
+    return this.firestore.collection<Adoption>(`adoptionPost`, ref => ref.orderBy('time', 'desc')).valueChanges();
   }
 
   getAdoptionDetail(adoptionId: string): Observable<Adoption> {

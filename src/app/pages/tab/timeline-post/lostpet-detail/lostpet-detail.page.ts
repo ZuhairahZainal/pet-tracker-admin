@@ -109,6 +109,7 @@ export class LostpetDetailPage implements OnInit {
 
   disapprovePost(timelineId: string, userId: string){
     this.firestore.collection('users').doc(userId).collection('notification').add(this.disapproval);
+    this.firestore.collection('notification').doc(userId).set(this.disapproval);
 
     this.firestore.collection('lostPet').doc(userId).collection('timeline').doc(timelineId).update({
       adminApprove: 'Disapproved'
