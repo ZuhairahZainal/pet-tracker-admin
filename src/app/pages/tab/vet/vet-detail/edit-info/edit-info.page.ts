@@ -12,6 +12,8 @@ import { VetService } from 'src/app/services/vet/vet.service';
 export class EditInfoPage implements OnInit {
 
   newVetDetails = {
+    time: new Date().getTime(),
+    date: new Date().toDateString(),
     vetName: '',
     vetAddress: '',
     vetEmail: '',

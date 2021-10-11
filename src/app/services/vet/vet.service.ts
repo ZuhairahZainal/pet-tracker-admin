@@ -16,7 +16,7 @@ export class VetService {
 
   // vet List
   getVetList(): Observable<VET[]> {
-    return this.firestore.collection<VET>(`vet`).valueChanges();
+    return this.firestore.collection<VET>(`vet`, ref => ref.orderBy('time', 'desc')).valueChanges();
   }
 
   getVetDetail(vetId: string): Observable<VET> {

@@ -53,7 +53,7 @@ export class RegisterPage implements OnInit
     .then(()=> {
       loading.dismiss();
       this.toast('Registeration Success!', 'success');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
     })
     .catch((error)=> {
       loading.dismiss();
@@ -66,7 +66,7 @@ export class RegisterPage implements OnInit
 
   login()
   {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
   }
 
   checkPassword()

@@ -12,7 +12,7 @@ export class PostService {
 
     // Feed post
     getFeedPost(): Observable<Feed[]> {
-      return this.firestore.collection<Feed>(`feedPost`).valueChanges();
+      return this.firestore.collection<Feed>(`feedPost`, ref => ref.orderBy('time', 'desc')).valueChanges();
     }
 
     getFeedDetail(feedId: string): Observable<Feed> {
@@ -21,7 +21,7 @@ export class PostService {
 
     // Lost Pet post
     getLostPetPost(): Observable<LostPetPost[]> {
-      return this.firestore.collection<LostPetPost>(`lostPetPost`).valueChanges();
+      return this.firestore.collection<LostPetPost>(`lostPetPost`, ref => ref.orderBy('time', 'desc')).valueChanges();
     }
 
     getLostPetDetail(lostPetId: string): Observable<LostPetPost> {
@@ -30,7 +30,7 @@ export class PostService {
 
     // Donation post
     getDonationPost(): Observable<DonationPost[]> {
-      return this.firestore.collection<DonationPost>(`donationPost`).valueChanges();
+      return this.firestore.collection<DonationPost>(`donationPost`, ref => ref.orderBy('time', 'desc')).valueChanges();
     }
 
     getDonationDetail(donationId: string): Observable<DonationPost> {

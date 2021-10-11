@@ -14,7 +14,8 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx'
 export class DonationDetailPage implements OnInit {
 
   disapproval = {
-    createdAt: new Date().toDateString(),
+    time: new Date().getTime(),
+    date: new Date().toDateString(),
     category: 'Disapproval Post',
     message: 'Your previous post has been deleted due to '
   }

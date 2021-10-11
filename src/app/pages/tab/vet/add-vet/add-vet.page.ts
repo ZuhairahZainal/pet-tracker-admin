@@ -35,8 +35,8 @@ export class AddVetPage implements OnInit {
   private ngFirestoreCollection: AngularFirestoreCollection<FILE>;
 
   vetDetail = {
-    adminApproval: 'Approved',
-    createdAt: new Date(),
+    time: new Date().getTime(),
+    date: new Date().toDateString(),
     vetId: '',
     vetName: '',
     vetAddress: '',

@@ -6,6 +6,8 @@ export interface FILE {
 
 export interface VET{
   adminApproval: string,
+  time: number,
+  date: string,
   vetId: string,
   vetName: string,
   vetAddress: string,

@@ -1,5 +1,6 @@
 export interface AdminNotif {
-  createdAt: string,
+  time: number,
+  date: string,
   reportDescription: string,
   reportId: string,
   reportProof: string,

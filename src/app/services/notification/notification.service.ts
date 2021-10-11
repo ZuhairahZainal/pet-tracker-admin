@@ -11,5 +11,5 @@ export class NotificationService {
   constructor(public firestore: AngularFirestore) { }
 
     getNotification(): Observable<AdminNotif[]>{
-      return this.firestore.collection<AdminNotif>(`admin-notification`, ref => ref.orderBy('createdAt', 'desc')).valueChanges();
+      return this.firestore.collection<AdminNotif>(`admin-notification`, ref => ref.orderBy('time', 'desc')).valueChanges();
     }}

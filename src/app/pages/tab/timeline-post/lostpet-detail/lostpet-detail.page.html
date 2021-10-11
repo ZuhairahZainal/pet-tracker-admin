@@ -14,10 +14,10 @@
   <ion-grid *ngIf="lostpet?.adminApprove === 'Pending'">
     <ion-row>
       <ion-col size="6">
-        <ion-button expand="block" color="success" (click)="approveBtn(lostpet?.lostPetFormId, lostpet?.userId)">Approve</ion-button>
+        <ion-button expand="block" color="success" (click)="approveBtn(lostpet?.lostPetId, lostpet?.userId)">Approve</ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button  expand="block" color="danger" (click)="disapproveBtn(lostpet?.lostPetFormId, lostpet?.userId)">Disapprove</ion-button>
+        <ion-button  expand="block" color="danger" (click)="disapproveBtn(lostpet?.lostPetId, lostpet?.userId)">Disapprove</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -50,40 +50,39 @@
   <ion-card>
     <ion-card-header>
       <ion-card-subtitle>Lost Pet Details</ion-card-subtitle>
+      <img *ngIf="lostpet?.petImage" [src]="lostpet?.petImage">
 
       <ion-card-subtitle color="tertiary">
         <ion-label color="dark">
           Pet Name:
         </ion-label>
-       {{ lostpet?.petname }}
+       {{ lostpet?.petName }}
       </ion-card-subtitle>
 
       <ion-card-subtitle color="tertiary">
         <ion-label color="dark">
           Pet Color:
         </ion-label>
-          {{ lostpet?.petcolor }}
+          {{ lostpet?.petColor }}
       </ion-card-subtitle>
 
       <ion-card-subtitle color="tertiary">
         <ion-label color="dark">
-          Pet Color:
+          Pet Gender:
         </ion-label>
-          {{ lostpet?.petgender }}
+          {{ lostpet?.petGender }}
       </ion-card-subtitle>
 
       <ion-card-subtitle color="tertiary">
         <ion-label color="dark">
           Pet Last Location:
         </ion-label>
-          {{ lostpet?.location }}
+          {{ lostpet?.lastLocation }}
       </ion-card-subtitle>
       </ion-card-header>
   </ion-card>
 
   <ion-card>
-    <img *ngIf="lostpet?.petImage" [src]="lostpet?.petImage">
-
     <ion-card-header>
       <ion-card-subtitle>Post Details</ion-card-subtitle>
 
@@ -91,7 +90,7 @@
         <ion-label color="dark">
           Posted on:
         </ion-label>
-         {{ lostpet?.createdAt }}
+         {{ lostpet?.date }}
        </ion-card-subtitle>
 
       <ion-card-subtitle color="tertiary">

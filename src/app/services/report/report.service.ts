@@ -11,7 +11,7 @@ export class ReportService {
   constructor(public firestore: AngularFirestore) {}
 
   getUserReport(): Observable<Report[]>{
-    return this.firestore.collection<Report>('report').valueChanges();
+    return this.firestore.collection<Report>('report', ref => ref.orderBy('time', 'desc')).valueChanges();
   }
 
   getReportDetail(reportId: string): Observable<Report> {

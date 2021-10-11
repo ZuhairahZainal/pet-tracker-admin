@@ -11,7 +11,7 @@ export class SalesService {
   constructor(public firestore: AngularFirestore) {}
 
   getUserProduct(): Observable<Product[]>{
-    return this.firestore.collection<Product>('productList').valueChanges();
+    return this.firestore.collection<Product>('productList', ref => ref.orderBy('time', 'desc')).valueChanges();
   }
 
   getProductDetail(productId: string): Observable<Product> {

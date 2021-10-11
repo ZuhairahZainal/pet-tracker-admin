@@ -14,10 +14,10 @@
   <ion-grid *ngIf="timeline?.adminApprove === 'Pending'">
     <ion-row>
       <ion-col size="6">
-        <ion-button expand="block" color="success" (click)="approveBtn(timeline?.feedFormId, timeline?.userId)">Approve</ion-button>
+        <ion-button expand="block" color="success" (click)="approveBtn(timeline?.postId, timeline?.userId)">Approve</ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button  expand="block" color="danger" (click)="disapproveBtn(timeline?.feedFormId, timeline?.userId)">Disapprove</ion-button>
+        <ion-button  expand="block" color="danger" (click)="disapproveBtn(timeline?.postId, timeline?.userId)">Disapprove</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -48,7 +48,7 @@
   </ion-card>
 
   <ion-card>
-    <img *ngIf="timeline?.feedImage" [src]="timeline?.feedImage">
+    <img *ngIf="timeline?.postImage" [src]="timeline?.postImage">
 
     <ion-card-header>
       <ion-card-subtitle>timeline Post Details</ion-card-subtitle>
@@ -57,7 +57,7 @@
         <ion-label color="dark">
           Posted on:
         </ion-label>
-         {{ timeline?.createdAt }}
+         {{ timeline?.date }}
        </ion-card-subtitle>
 
       <ion-card-subtitle color="tertiary">
@@ -69,9 +69,16 @@
 
       <ion-card-subtitle color="tertiary">
         <ion-label color="dark">
+          Post Title:
+        </ion-label>
+       {{ timeline?.postTitle }}
+      </ion-card-subtitle>
+
+      <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
           Post Status:
         </ion-label>
-          {{ timeline?.feedStatus }}
+          {{ timeline?.postDescription }}
       </ion-card-subtitle>
       </ion-card-header>
   </ion-card>

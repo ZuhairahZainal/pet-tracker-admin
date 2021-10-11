@@ -54,12 +54,12 @@ export class LoginPage implements OnInit {
   } //end of login
 
  forgot(){
-  this.router.navigate(['/forgot-password']);
+  this.router.navigate(['/auth/forgot-password']);
  }//end of forgot password
 
  register()
   {
-    this.router.navigate(['/register']);
+    this.router.navigate(['/auth/register']);
   } //end of register
 
  async toast(message, status){
