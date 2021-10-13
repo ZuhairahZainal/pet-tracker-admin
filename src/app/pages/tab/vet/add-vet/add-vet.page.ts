@@ -40,6 +40,7 @@ export class AddVetPage implements OnInit {
     vetId: '',
     vetName: '',
     vetAddress: '',
+    vetDistrict: '',
     vetEmail: null,
     vetPhone: null,
     vetMobilePhone: null,
@@ -74,8 +75,10 @@ export class AddVetPage implements OnInit {
       Validators.required,
       Validators.minLength(10),
     ]),
-    vetEmail: new FormControl(this.vetDetail.vetEmail,[
+    vetDistrict: new FormControl(this.vetDetail.vetDistrict,[
       Validators.required,
+    ]),
+    vetEmail: new FormControl(this.vetDetail.vetEmail,[
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
     ]),
     vetPhone: new FormControl(this.vetDetail.vetPhone,[
@@ -91,8 +94,7 @@ export class AddVetPage implements OnInit {
       Validators.pattern('^[0-9]+$')
     ]),
     vetSocMed: new FormControl(this.vetDetail.vetSocMed,[
-      Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(2),
     ]),
     vetService: new FormControl(this.vetDetail.vetService,[
       Validators.required,
@@ -114,6 +116,7 @@ export class AddVetPage implements OnInit {
     this.vetDetail.vetId = this.firestore.createId();
     this.vetDetail.vetName = this.addVetForm.get('vetName').value;
     this.vetDetail.vetAddress = this.addVetForm.get('vetAddress').value;
+    this.vetDetail.vetDistrict = this.addVetForm.get('vetDistrict').value;
     this.vetDetail.vetEmail = this.addVetForm.get('vetEmail').value;
     this.vetDetail.vetPhone = this.addVetForm.get('vetPhone').value;
     this.vetDetail.vetMobilePhone = this.addVetForm.get('vetMobilePhone').value;
@@ -136,7 +139,7 @@ export class AddVetPage implements OnInit {
     })
   }
 
-  fileUpload(event: Event) {
+  pictureUpload(event: Event) {
 
     let file = (event.target as HTMLInputElement).files[0];
 

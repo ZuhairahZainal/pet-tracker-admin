@@ -53,12 +53,25 @@
           {{ report?.reportDescription }}
       </ion-card-subtitle>
 
+      <ion-card-subtitle color="tertiary" >
+        <img *ngIf="report?.reportType === 'Spam'" [src]="report?.reportProof">
+        <img *ngIf="report?.reportType === 'Error'" [src]="report?.reportProof">
+        <img *ngIf="report?.reportType === 'Others'" [src]="report?.reportProof">
+       </ion-card-subtitle>
+
+       <ion-card-subtitle color="tertiary">
+        <ion-label color="dark">
+          Post ID:
+        </ion-label>
+        {{ report?.ownerId }}
+      </ion-card-subtitle>
+
       <ion-card-subtitle color="tertiary">
         <ion-label color="dark">
-          Report Proof:
+          Post User ID:
         </ion-label>
-        <img [src]="report?.reportProof">
-       </ion-card-subtitle>
+        {{ report?.postId }}
+      </ion-card-subtitle>
 
        <ion-card-subtitle color="tertiary">
         <ion-label color="dark">

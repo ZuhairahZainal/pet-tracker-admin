@@ -12,11 +12,11 @@ export class PostService {
 
     // Feed post
     getFeedPost(): Observable<Feed[]> {
-      return this.firestore.collection<Feed>(`feedPost`, ref => ref.orderBy('time', 'desc')).valueChanges();
+      return this.firestore.collection<Feed>(`newsFeedPost`, ref => ref.orderBy('time', 'desc')).valueChanges();
     }
 
     getFeedDetail(feedId: string): Observable<Feed> {
-      return this.firestore.collection('feedPost').doc<Feed>(feedId).valueChanges();
+      return this.firestore.collection('newsFeedPost').doc<Feed>(feedId).valueChanges();
     }
 
     // Lost Pet post

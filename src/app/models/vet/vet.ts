@@ -11,6 +11,7 @@ export interface VET{
   vetId: string,
   vetName: string,
   vetAddress: string,
+  vetDistrict: string,
   vetEmail: string,
   vetPhone: number,
   vetMobilePhone: number,

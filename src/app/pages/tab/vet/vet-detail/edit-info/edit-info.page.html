@@ -59,6 +59,21 @@
 
       <ion-card>
         <ion-card-content>
+          <ion-label position="floating">District</ion-label>
+            <ion-select value="gender" interface="action-sheet" formControlName="vetDistrict" placeholder="Which district is it?">
+              <ion-select-option value="Brunei Muara">Brunei Muara</ion-select-option>
+              <ion-select-option value="Tutong">Tutong</ion-select-option>
+              <ion-select-option value="Kuala Belait">Kuala Belait</ion-select-option>
+              <ion-select-option value="Temburong">Temburong</ion-select-option>
+            </ion-select>
+            <ion-item lines="none" class="error-message" *ngIf="!updateVetDetailForm.controls.vetDistrict.valid && updateVetDetailForm.controls.vetDistrict.touched">
+              <p>Please select one.</p>
+            </ion-item>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
           <ion-card-subtitle>Vet Phone Number</ion-card-subtitle>
           <ion-input formControlName="vetPhone" type="tel" required [placeholder]="vetDetail?.vetPhone"
           [class.invalid]="!updateVetDetailForm.controls.vetPhone.valid && updateVetDetailForm.controls.vetPhone.touched"></ion-input>

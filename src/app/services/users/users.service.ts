@@ -11,7 +11,7 @@ export class UsersService {
   constructor(public firestore: AngularFirestore) {}
 
   getUserAccount(): Observable<User[]>{
-    return this.firestore.collection<User>('users', ref => ref.orderBy('time', 'desc')).valueChanges();
+    return this.firestore.collection<User>('users').valueChanges();
   }
 
   getUserDetails(userId: string): Observable<User> {

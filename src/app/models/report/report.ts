@@ -9,4 +9,9 @@ export interface Report {
   userEmail: string,
   userId: string,
   userName: string,
+  userImage: string,
+  // post report
+  ownerId: string,
+  postId: string,
+
 }

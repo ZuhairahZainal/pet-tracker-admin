@@ -15,10 +15,7 @@ export class UserReportPage implements OnInit {
 
   public reportList: Observable<Report[]>;
 
-  constructor(private reportService: ReportService,
-              private alertCtrl: AlertController,
-              private firestore: AngularFirestore,
-              private router: Router) {}
+  constructor(private reportService: ReportService) {}
 
   ngOnInit() {
     this.reportList = this.reportService.getUserReport();
