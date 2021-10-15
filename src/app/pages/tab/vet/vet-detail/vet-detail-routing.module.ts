@@ -9,8 +9,8 @@ const routes: Routes = [
     component: VetDetailPage
   },
   {
-    path: 'edit-info/:id',
-    loadChildren: () => import('./edit-info/edit-info.module').then( m => m.EditInfoPageModule)
+    path: 'edit-detail/:vetId',
+    loadChildren: () => import('./edit-detail/edit-detail.module').then( m => m.EditDetailPageModule)
   }
 ];
 

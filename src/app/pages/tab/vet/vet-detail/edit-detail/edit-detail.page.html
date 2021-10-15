@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['../../../../vet-detail', vetDetails?.vetId]">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Edit Vet Details</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!updateDetailForm.valid" (click)="updateVetDetail()">DONE</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img *ngIf="vetDetails?.vetPhoto" [src]="vetDetails?.vetPhoto"/>
+
+  <div [formGroup]="updateDetailForm">
+    <ion-card>
+      <ion-card-content>
+        <ion-label position="floating">Vet Name</ion-label>
+        <ion-input type="text" formControlName="vetName" [placeholder]="vetDetails?.vetName"></ion-input>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateDetailForm.controls.vetName.valid && updateDetailForm.controls.vetName.touched">
+          <p>Vet Name is required to be stated.</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label position="floating">Vet Address</ion-label>
+        <ion-input type="text" formControlName="vetAddress" [placeholder]="vetDetails?.vetAddress"></ion-input>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateDetailForm.controls.vetAddress.valid && updateDetailForm.controls.vetAddress.touched">
+          <p>Vet Address is required to be stated.</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label position="floating">Vet Email Address</ion-label>
+        <ion-input type="email" formControlName="vetEmail" [placeholder]="vetDetails?.vetEmail"></ion-input>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateDetailForm.controls.vetEmail.valid && updateDetailForm.controls.vetEmail.touched">
+          <p>Vet Email Address is required to be stated.</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label position="floating">Vet Phone Number</ion-label>
+        <ion-input type="tel" formControlName="vetPhone" [placeholder]="vetDetails?.vetPhone"></ion-input>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateDetailForm.controls.vetPhone.valid && updateDetailForm.controls.vetPhone.touched">
+          <p>Vet Phone Number is required to be stated.</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label position="floating">Vet Mobile Number</ion-label>
+        <ion-input type="tel" formControlName="vetMobilePhone" [placeholder]="vetDetails?.vetMobilePhone"></ion-input>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateDetailForm.controls.vetMobilePhone.valid && updateDetailForm.controls.vetMobilePhone.touched">
+          <p>Vet Mobile Number is required to be stated.</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label position="floating">Vet Social Media</ion-label>
+        <ion-input type="text" formControlName="vetSocMed" [placeholder]="vetDetails?.vetSocMed"></ion-input>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateDetailForm.controls.vetSocMed.valid && updateDetailForm.controls.vetSocMed.touched">
+          <p>Vet Social Media is required to be stated. If this none, just enter N/A.</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label position="floating">Vet Services Provided</ion-label>
+        <ion-input type="text" formControlName="vetService" [placeholder]="vetDetails?.vetService"></ion-input>
+
+        <ion-item lines="none" class="error-message" *ngIf="!updateDetailForm.controls.vetService.valid && updateDetailForm.controls.vetService.touched">
+          <p>Vet Social Media is required to be stated. If this none, just enter N/A.</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+          <ion-card-subtitle>Opening Time</ion-card-subtitle>
+          <ion-datetime formControlName="vetOpen" displayFormat="hh-mm-A" required [placeholder]="vetDetails?.vetOpen" ></ion-datetime>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+          <ion-card-subtitle>Closing Time</ion-card-subtitle>
+          <ion-datetime formControlName="vetClose" displayFormat="hh-mm-A" required [placeholder]="vetDetails?.vetClose"></ion-datetime>
+      </ion-card-content>
+    </ion-card>
+
+
+  </div>
+
+</ion-content>
