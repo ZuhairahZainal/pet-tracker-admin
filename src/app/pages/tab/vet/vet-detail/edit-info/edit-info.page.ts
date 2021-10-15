@@ -16,6 +16,7 @@ export class EditInfoPage implements OnInit {
     date: new Date().toDateString(),
     vetName: '',
     vetAddress: '',
+    vetDistrict: '',
     vetEmail: '',
     vetPhone: '',
     vetMobilePhone: '',
@@ -48,6 +49,9 @@ export class EditInfoPage implements OnInit {
       vetAddress: new FormControl(this.newVetDetails.vetAddress,[
         Validators.required,
         Validators.minLength(10),
+      ]),
+      vetDistrict: new FormControl(this.vetDetail.vetDistrict,[
+        Validators.required,
       ]),
       vetEmail: new FormControl(this.newVetDetails.vetEmail,[
         Validators.required,
@@ -89,6 +93,7 @@ export class EditInfoPage implements OnInit {
     this.newVetDetails.vetMobilePhone = this.updateVetDetailForm.get('vetMobilePhone').value;
     this.newVetDetails.vetSocMed = this.updateVetDetailForm.get('vetSocMed').value;
     this.newVetDetails.vetService = this.updateVetDetailForm.get('vetService').value;
+    this.newVetDetails.vetDistrict = this.updateVetDetailForm.get('vetDistrict').value;
 
     this.vetService.updateVetDetail(this.id, this.newVetDetails);
   }
