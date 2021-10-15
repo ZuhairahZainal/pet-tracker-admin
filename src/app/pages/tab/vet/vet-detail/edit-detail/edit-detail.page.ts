@@ -16,8 +16,8 @@ export class EditDetailPage implements OnInit {
     vetAddress: '',
     vetDistrict: '',
     vetEmail: '',
-    vetPhone: '',
-    vetMobilePhone: '',
+    vetPhone: null,
+    vetMobilePhone: null,
     vetSocMed: '',
     vetService: '',
     vetOpen: '',
@@ -87,8 +87,8 @@ export class EditDetailPage implements OnInit {
     this.updateVetDetails.vetAddress = this.updateDetailForm.get('vetAddress').value;
     this.updateVetDetails.vetDistrict = this.updateDetailForm.get('vetDistrict').value;
     this.updateVetDetails.vetEmail = this.updateDetailForm.get('vetEmail').value;
-    this.updateVetDetails.vetPhone = this.updateDetailForm.get('vetPhone').value;
-    this.updateVetDetails.vetMobilePhone = this.updateDetailForm.get('vetMobilePhone').value;
+    this.updateVetDetails.vetPhone = Number(this.updateDetailForm.get('vetPhone').value);
+    this.updateVetDetails.vetMobilePhone = Number(this.updateDetailForm.get('vetMobilePhone').value);
     this.updateVetDetails.vetSocMed = this.updateDetailForm.get('vetSocMed').value;
     this.updateVetDetails.vetService = this.updateDetailForm.get('vetService').value;
     this.updateVetDetails.vetOpen = this.updateDetailForm.get('vetOpen').value;

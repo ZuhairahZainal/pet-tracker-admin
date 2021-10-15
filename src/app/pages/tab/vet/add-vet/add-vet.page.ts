@@ -118,8 +118,8 @@ export class AddVetPage implements OnInit {
     this.vetDetail.vetAddress = this.addVetForm.get('vetAddress').value;
     this.vetDetail.vetDistrict = this.addVetForm.get('vetDistrict').value;
     this.vetDetail.vetEmail = this.addVetForm.get('vetEmail').value;
-    this.vetDetail.vetPhone = this.addVetForm.get('vetPhone').value;
-    this.vetDetail.vetMobilePhone = this.addVetForm.get('vetMobilePhone').value;
+    this.vetDetail.vetPhone = Number(this.addVetForm.get('vetPhone').value);
+    this.vetDetail.vetMobilePhone = Number(this.addVetForm.get('vetMobilePhone').value);
     this.vetDetail.vetSocMed = this.addVetForm.get('vetSocMed').value;
     this.vetDetail.vetService = this.addVetForm.get('vetService').value;
     this.vetDetail.vetOpen = this.addVetForm.get('vetOpen').value;
