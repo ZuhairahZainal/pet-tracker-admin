@@ -25,9 +25,9 @@
       <ion-segment-button value="approve">
         <ion-label>Approved</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="disapprove">
+      <!-- <ion-segment-button value="disapprove">
         <ion-label>Disapproved</ion-label>
-      </ion-segment-button>
+      </ion-segment-button> -->
     </ion-segment>
   </ion-toolbar>
 
@@ -124,7 +124,7 @@
   </ion-row>
 </ion-grid>
 
-<ion-grid *ngIf="segment === 'disapprove'">
+<!-- <ion-grid *ngIf="segment === 'disapprove'">
   <ion-row *ngFor="let detail of productList | async">
     <ion-col>
       <ion-card>
@@ -167,6 +167,6 @@
       </ion-card>
     </ion-col>
   </ion-row>
-</ion-grid>
+</ion-grid> -->
 
 </ion-content>

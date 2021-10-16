@@ -92,13 +92,17 @@ export class AdoptionPostPage implements OnInit {
     this.firestore.collection('users').doc(userId).collection('notification').add(this.disapproval);
     this.firestore.collection('notification').doc(userId).set(this.disapproval);
 
-    this.firestore.collection('adoption').doc(userId).collection('adoptionDetail').doc(adoptionId).update({
-      adminApprove: 'Disapproved'
-    });
+    // this.firestore.collection('adoption').doc(userId).collection('adoptionDetail').doc(adoptionId).update({
+    //   adminApprove: 'Disapproved'
+    // });
 
-    this.firestore.collection('adoptionPost').doc(adoptionId).update({
-      adminApprove: 'Disapproved'
-    }).then( async success => {
+    // this.firestore.collection('adoptionPost').doc(adoptionId).update({
+    //   adminApprove: 'Disapproved'
+    // })
+    this.firestore.collection('adoption').doc(userId).collection('adoptionDetail').doc(adoptionId).delete();
+
+    this.firestore.collection('adoptionPost').doc(adoptionId).delete()
+    .then( async success => {
       let alert = await this.alertCtrl.create({
         header: 'Disapproved Post',
         message: 'Adoption Post has been disapproved and notified to the user. Thank you Admin for your respond.',

@@ -73,7 +73,7 @@ export class LostpetDetailPage implements OnInit {
   }
 
   approvePost(timelineId: string, userId: string){
-    this.firestore.collection('lostPet').doc(userId).collection('timeline').doc(timelineId).update({
+    this.firestore.collection('feed').doc(userId).collection('lostPet').doc(timelineId).update({
       adminApprove: 'Approved'
     });
 
@@ -111,13 +111,17 @@ export class LostpetDetailPage implements OnInit {
     this.firestore.collection('users').doc(userId).collection('notification').add(this.disapproval);
     this.firestore.collection('notification').doc(userId).set(this.disapproval);
 
-    this.firestore.collection('lostPet').doc(userId).collection('timeline').doc(timelineId).update({
-      adminApprove: 'Disapproved'
-    });
+    // this.firestore.collection('lostPet').doc(userId).collection('timeline').doc(timelineId).update({
+    //   adminApprove: 'Disapproved'
+    // });
 
-    this.firestore.collection('lostPetPost').doc(timelineId).update({
-      adminApprove: 'Disapproved'
-    }).then( async success => {
+    // this.firestore.collection('lostPetPost').doc(timelineId).update({
+    //   adminApprove: 'Disapproved'
+    // })
+    this.firestore.collection('feed').doc(userId).collection('lostPet').doc(timelineId).delete();
+
+    this.firestore.collection('lostPetPost').doc(timelineId).delete()
+    .then( async success => {
       let alert = await this.alertCtrl.create({
         header: 'Disapproved Post',
         message: 'Lost Pet Post has been disapproved and notified to the user. Thank you Admin for your respond.',

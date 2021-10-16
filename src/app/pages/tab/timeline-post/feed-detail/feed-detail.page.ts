@@ -74,11 +74,11 @@ export class FeedDetailPage implements OnInit {
   }
 
   approvePost(timelineId: string, userId: string){
-    this.firestore.collection('feed').doc(userId).collection('timeline').doc(timelineId).update({
+    this.firestore.collection('feed').doc(userId).collection('newsFeed').doc(timelineId).update({
       adminApprove: 'Approved'
     });
 
-    this.firestore.collection('feedPost').doc(timelineId).update({
+    this.firestore.collection('newsFeedPost').doc(timelineId).update({
       adminApprove: 'Approved'
     }).then( async success => {
       let alert = await this.alertCtrl.create({
@@ -112,13 +112,18 @@ export class FeedDetailPage implements OnInit {
     this.firestore.collection('users').doc(userId).collection('notification').add(this.disapproval);
     this.firestore.collection('notification').doc(userId).set(this.disapproval);
 
-    this.firestore.collection('feed').doc(userId).collection('timeline').doc(timelineId).update({
-      adminApprove: 'Disapproved'
-    });
+    // this.firestore.collection('feed').doc(userId).collection('newsFeed').doc(timelineId).update({
+    //   adminApprove: 'Disapproved'
+    // });
 
-    this.firestore.collection('feedPost').doc(timelineId).update({
-      adminApprove: 'Disapproved'
-    }).then( async success => {
+    // this.firestore.collection('feedPost').doc(timelineId).update({
+    //   adminApprove: 'Disapproved'
+    // })
+
+    this.firestore.collection('feed').doc(userId).collection('newsFeed').doc(timelineId).delete();
+
+    this.firestore.collection('feedPost').doc(timelineId).delete()
+    .then( async success => {
       let alert = await this.alertCtrl.create({
         header: 'Disapproved Post',
         message: 'Timeline Post has been disapproved and notified to the user. Thank you Admin for your respond.',

@@ -15,13 +15,13 @@ export class EditDetailPage implements OnInit {
     vetName: '',
     vetAddress: '',
     vetDistrict: '',
-    vetEmail: '',
+    vetEmail: null,
     vetPhone: null,
     vetMobilePhone: null,
-    vetSocMed: '',
+    vetSocMed: null,
     vetService: '',
-    vetOpen: '',
-    vetClose: ''
+    vetOpen: new Date(),
+    vetClose: new Date()
   }
 
   petId: string;
@@ -51,7 +51,6 @@ export class EditDetailPage implements OnInit {
         Validators.required,
       ]),
       vetEmail: new FormControl(this.updateVetDetails.vetEmail, [
-        Validators.required,
         Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
       ]),
       vetPhone: new FormControl(this.updateVetDetails.vetPhone, [
@@ -67,8 +66,7 @@ export class EditDetailPage implements OnInit {
         Validators.pattern('^[0-9]+$')
       ]),
       vetSocMed: new FormControl(this.updateVetDetails.vetSocMed, [
-        Validators.required,
-        Validators.minLength(5)
+        Validators.minLength(2)
       ]),
       vetService: new FormControl(this.updateVetDetails.vetService, [
         Validators.required,
@@ -82,7 +80,7 @@ export class EditDetailPage implements OnInit {
     })
   }
 
-  updateVetDetail(): void{
+   updateVetDetail(){
     this.updateVetDetails.vetName = this.updateDetailForm.get('vetName').value;
     this.updateVetDetails.vetAddress = this.updateDetailForm.get('vetAddress').value;
     this.updateVetDetails.vetDistrict = this.updateDetailForm.get('vetDistrict').value;

@@ -36,14 +36,14 @@ export class NewProductPostPage implements OnInit {
     this.segment = ev.detail.value;
   }
 
-  async approveBtn(adoptionId: string, userId: string){
+  async approveBtn(productId: string, userId: string){
     const alert = await this.alertCtrl.create({
       header: 'Approve Post',
       message: 'Are you sure you want to approve this adoption post?',
       buttons: [
         {
           text: 'Yes',
-          handler: () =>  {this.approvePost(adoptionId, userId);
+          handler: () =>  {this.approvePost(productId, userId);
         }
         },
         {
@@ -54,12 +54,12 @@ export class NewProductPostPage implements OnInit {
     alert.present();
   }
 
-  approvePost(adoptionId: string, userId: string){
-    this.firestore.collection('adoption').doc(userId).collection('adoptionDetail').doc(adoptionId).update({
+  approvePost(productId: string, userId: string){
+    this.firestore.collection('sale').doc(userId).collection('newProduct').doc(productId).update({
       adminApprove: 'Approved'
     });
 
-    this.firestore.collection('adoptionPost').doc(adoptionId).update({
+    this.firestore.collection('productList').doc(productId).update({
       adminApprove: 'Approved'
     }).then( async success => {
       let alert = await this.alertCtrl.create({
@@ -91,23 +91,20 @@ export class NewProductPostPage implements OnInit {
     alert.present();
   }
 
-  disapprovePost(adoptionId: string, userId: string){
+  disapprovePost(productId: string, userId: string){
     this.firestore.collection('users').doc(userId).collection('notification').add(this.disapproval);
     this.firestore.collection('notification').doc(userId).set(this.disapproval);
 
-    this.firestore.collection('adoption').doc(userId).collection('adoptionDetail').doc(adoptionId).update({
-      adminApprove: 'Disapproved'
-    });
+    this.firestore.collection('sale').doc(userId).collection('newProduct').doc(productId).delete();
 
-    this.firestore.collection('adoptionPost').doc(adoptionId).update({
-      adminApprove: 'Disapproved'
-    }).then( async success => {
+    this.firestore.collection('productList').doc(productId).delete()
+    .then( async success => {
       let alert = await this.alertCtrl.create({
         header: 'Disapproved Post',
         message: 'Adoption Post has been disapproved and notified to the user. Thank you Admin for your respond.',
         buttons: [
           {text: 'OK',
-          handler: () => this.router.navigate(['tab/adoption-post'])
+          handler: () => this.router.navigate(['tab/new-product-post'])
         }]
 
       });

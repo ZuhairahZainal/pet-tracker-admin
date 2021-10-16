@@ -107,13 +107,17 @@ export class MoreInfoPage implements OnInit {
     this.firestore.collection('users').doc(userId).collection('notification').add(this.disapproval);
     this.firestore.collection('notification').doc(userId).set(this.disapproval);
 
-    this.firestore.collection('sale').doc(userId).collection('newProduct').doc(productId).update({
-      adminApprove: 'Disapproved'
-    });
+    // this.firestore.collection('sale').doc(userId).collection('newProduct').doc(productId).update({
+    //   adminApprove: 'Disapproved'
+    // });
 
-    this.firestore.collection('productList').doc(productId).update({
-      adminApprove: 'Disapproved'
-    }).then( async success => {
+    // this.firestore.collection('productList').doc(productId).update({
+    //   adminApprove: 'Disapproved'
+
+    this.firestore.collection('sale').doc(userId).collection('newProduct').doc(productId).delete();
+
+    this.firestore.collection('productList').doc(productId).delete()
+    .then( async success => {
       let alert = await this.alertCtrl.create({
         header: 'Disapproved Post',
         message: 'Product Post has been disapproved and notified to the user. Thank you Admin for your respond.',
